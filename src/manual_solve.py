@@ -4,19 +4,32 @@ import os, sys
 import json
 import numpy as np
 import re
+import solution_lib_0dfd9992
 
 ### YOUR CODE HERE: write at least three functions which solve
 ### specific tasks by transforming the input x and returning the
 ### result. Name them according to the task ID as in the three
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
-def solve_6a1e5592(x):
-    return x
+def solve_0dfd9992(x):
+    '''A simple pattern to remove unused (black) squares and merge the colored squares to form smaller grid.
 
-def solve_b2862040(x):
-    return x
+    '''
+    rows = solution_lib_0dfd9992.rows_with_missing_squares(x)
+    new_rows = dict()
+    for row in rows:
+        new_row = solution_lib_0dfd9992.match_and_merge(x[row], x)
+        i = 0
+        while ( (np.count_nonzero(new_row) != len(new_row)) and i < 10):
+            i = i + 1
+            new_row = solution_lib_0dfd9992.match_and_merge(new_row, x)
+            
+        new_rows[row] = solution_lib_0dfd9992.match_and_merge(x[row], x)
 
-def solve_05269061(x):
+    for row in rows:
+        if row in new_rows.keys(): 
+            x[row] =  new_rows[row]
+        
     return x
 
 
