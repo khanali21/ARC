@@ -1,9 +1,14 @@
-# Solution Library for problem 0dfd9992
+# Solution Library for problem ff805c23
 import numpy as np
-
+"""
+Solutions by Muhammad Ali Khan (Student ID 20235525)
+"""
 
 
 def get_hidden_matrix_dimension(x):
+    """This searches for the matrix which is hiding the squares, the hidden square color is 1 (blue).
+    It returns the location of the matrix (start_row, start_column, end_row, end_column)
+    """
     hidden_square_color = 1
     start_row = -1
     start_column = -1
@@ -33,9 +38,13 @@ def get_hidden_matrix_dimension(x):
     end_column = start_column + dimenson_x
     return (start_row, start_column, end_row, end_column)
 
-
-
 def determine_mirror_axis(x):
+    """This determines the axis of symmetry depending upon the location of the hidden matrix. 
+    If the hidden matrix is crossing the mid row on left or right we have vertical symmetry.
+    If the hidden matrix is crossing the mid column on top or bottom we have horizontal symmetry
+    else we return horizontal. 
+    It also return the side which has the revealed squars.
+    """
     start_row, start_column, end_row, end_column = get_hidden_matrix_dimension(x)
     mid_row = int(len(x)/2)
     mid_col = int(len(x[0])/2)
@@ -50,6 +59,9 @@ def determine_mirror_axis(x):
     return (axis, side)    
 
 def mirror_it_vertical(x):
+    """
+    Transpose the matrix, divide it into two and then reverse it (flip), and then merge and transpose agian, return the resultant matrix
+    """
     t_x = np.transpose(x)
     dimension_y = len(x)
     half1 = []
@@ -64,6 +76,9 @@ def mirror_it_vertical(x):
     return b
 
 def mirror_it_horizontal(x, side):
+    """
+        Divide the matrix, depending upon the side (up or down), reverse the half which is has revealed squares and then merge the two halfs.
+    """
     dimension_y = len(x)
     half1 = []
     half2 = []
@@ -80,8 +95,10 @@ def mirror_it_horizontal(x, side):
 
     return a
 
-
 def get_hidden_squares(x, a):
+    """
+    Return the matrix consisting of the hidden squares.
+    """
     hidden_square_color = 1
     output_rectangle = []
     start_row = -1

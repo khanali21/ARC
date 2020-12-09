@@ -1,3 +1,9 @@
+# IMPORTANT NOTE
+This is a private fork for the repo, in order to do the assignment for NUI MCS in AI.
+Please do not use it as reference. 
+
+
+
 # The Abstraction and Reasoning Corpus (ARC)
 
 This repository contains the ARC task data, as well as a browser-based interface for humans to try their hand at solving the tasks manually.

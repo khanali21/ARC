@@ -1,6 +1,10 @@
 # Solution Library for problem 0dfd9992
 import numpy as np
 
+"""
+Solutions by Muhammad Ali Khan (Student ID 20235525)
+"""
+
 def match(a1, a2):
     '''This is simple matching algorithm to match two lists. It ignores the columns with '0' in it and matches only the elements that have non-zero values in both lists.
     '''
@@ -41,7 +45,7 @@ def merge(a1, a2):
     return result            
 
 def match_and_merge(actual_row, input):
-    """This returns the final row after matching a correspondin row in the input that closely matches
+    """This returns the final row after matching a corresponding row in the input that closely matches
     """
     if np.count_nonzero(actual_row) == len(actual_row):
         return actual_row
@@ -58,6 +62,9 @@ def match_and_merge(actual_row, input):
     return x
 
 def rows_with_missing_squares(squares):
+    """This searches for the squares with 0 value and returns the list of corresponding rows.
+
+    """
     rows = []
     for i, square in enumerate(squares):
         if 0 in square:
