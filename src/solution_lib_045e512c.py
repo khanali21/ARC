@@ -1,5 +1,5 @@
-# Solution Library for problem 045e512c
 import numpy as np
+# Solution Library for problem 045e512c
 """
 Solutions by Muhammad Ali Khan (Student ID 20235525)
 """

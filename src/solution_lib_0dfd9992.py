@@ -1,6 +1,5 @@
-# Solution Library for problem 0dfd9992
 import numpy as np
-
+# Solution Library for problem 0dfd9992
 """
 Solutions by Muhammad Ali Khan (Student ID 20235525)
 """

@@ -1,5 +1,5 @@
-# Solution Library for problem ff805c23
 import numpy as np
+# Solution Library for problem ff805c23
 """
 Solutions by Muhammad Ali Khan (Student ID 20235525)
 """
