@@ -5,6 +5,7 @@ import json
 import numpy as np
 import re
 import solution_lib_0dfd9992
+import solution_lib_045e512c
 
 ### YOUR CODE HERE: write at least three functions which solve
 ### specific tasks by transforming the input x and returning the
@@ -31,6 +32,59 @@ def solve_0dfd9992(x):
             x[row] =  new_rows[row]
         
     return x
+
+def solve_045e512c(x):
+    ''' Task Type: Identifying the pattern and filling the correct color
+        A simple pattern to identify the grid based on the color and then fill that grid with one color in a corresponding squares. 
+    '''
+    patterns = solution_lib_045e512c.identify_pattern(x) 
+    pattern_to_repeat = solution_lib_045e512c.get_pattern_to_repeat(patterns)
+    p_row, p_column, p_value = pattern_to_repeat
+    left = None
+    right = None
+    up = None
+    down = None
+    top_left = None
+    top_right = None
+    bottom_left = None
+    bottom_right = None
+    for key, (row, column, value) in patterns.items():
+        if (row == (p_row+4) and column == p_column):
+            down = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (row == (p_row-4) and column == p_column):
+            up = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if column == (p_column-4) and row == p_row:
+            left = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (column == (p_column+4) and row == p_row):
+            right = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (row == (p_row-4) and column == p_column+4):
+            top_right = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (row == (p_row+4) and column == p_column+4):
+            bottom_right = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (row == (p_row-4) and column == p_column-4):
+            top_left = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+        if (row == (p_row+4) and column == p_column-4):
+            bottom_left = solution_lib_045e512c.get_colored_matrix((row, column, value), pattern_to_repeat[2])
+
+    if left:
+        solution_lib_045e512c.repeat_left_matrices(left, x)
+    if right:
+        solution_lib_045e512c.repeat_right_matrices(right, x)
+    if up:
+        solution_lib_045e512c.repeat_up_matrices(up, x)
+    if down: 
+        solution_lib_045e512c.repeat_down_matrices(down,x)
+    if top_right:
+        solution_lib_045e512c.repeat_top_right_matrices(top_right, x)
+    if  bottom_right:       
+        solution_lib_045e512c.repeat_bottom_right_matrices(bottom_right,x)
+    if top_left:        
+        solution_lib_045e512c.repeat_top_left_matrices(top_left, x)
+    if  bottom_left:       
+        solution_lib_045e512c.repeat_bottom_left_matrices(bottom_left, x)
+    
+    return x
+
 
 
 def main():
