@@ -6,6 +6,7 @@ import numpy as np
 import re
 import solution_lib_0dfd9992
 import solution_lib_045e512c
+import solution_lib_ff805c23
 
 ### YOUR CODE HERE: write at least three functions which solve
 ### specific tasks by transforming the input x and returning the
@@ -85,6 +86,14 @@ def solve_045e512c(x):
     
     return x
 
+def solve_ff805c23(x):
+    (axis, side) = solution_lib_ff805c23.determine_mirror_axis(x)
+    if (axis == 'v'):
+        a = solution_lib_ff805c23.mirror_it_vertical(x)
+    if (axis == 'h'):
+        a = solution_lib_ff805c23.mirror_it_horizontal(x, side)
+    result = solution_lib_ff805c23.get_hidden_squares(x, a)
+    return result
 
 
 def main():
